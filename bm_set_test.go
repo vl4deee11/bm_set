@@ -4,6 +4,20 @@ import (
 	"testing"
 )
 
+// BenchmarkBMSet        100000000               10.6 ns/op             0 B/op          0 allocs/op
+func BenchmarkBMSet(b *testing.B) {
+	sz := uint64(b.N)
+	bms := New(sz)
+	for i := 0; i < b.N; i++ {
+		bms.Set(i)
+		v := bms.Get(i)
+		if v {
+
+		}
+		bms.Delete(i)
+	}
+}
+
 func TestBMSet1(t *testing.T) {
 	sz := 131
 	bms := New(uint64(sz))
